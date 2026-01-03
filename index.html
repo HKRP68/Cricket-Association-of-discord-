@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASSOCIATION OF DISCORD</title>
+    <title>CRICKET ASSOCIATION OF DISCORD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -3063,7 +3063,7 @@ function updateAndSaveStats(currentMatchStats) {
             const blob = new Blob([JSON.stringify(dataToBackup, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url; a.download = `cricsim_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.href = url; a.download = `CricAssoDiscord_backup_${new Date().toISOString().slice(0,10)}.json`;
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
             URL.revokeObjectURL(url);
             showNotification('All data backed up.');
@@ -3335,7 +3335,7 @@ function updateAndSaveStats(currentMatchStats) {
                 bowlingData.forEach(p => { const overs = `${Math.floor(p.ballsBowled / 6)}.${p.ballsBowled % 6}`; const bbi = p.bestBowling.wickets > 0 ? `${p.bestBowling.wickets}/${p.bestBowling.runs}` : '-'; const bowlAvg = p.wickets > 0 ? (p.runsConceded / p.wickets).toFixed(2) : '∞'; const econ = p.ballsBowled > 0 ? (p.runsConceded / (p.ballsBowled / 6)).toFixed(2) : '0.00'; const bowlSr = p.wickets > 0 ? (p.ballsBowled / p.wickets).toFixed(2) : '∞'; statsText += `${p.name.padEnd(25)} ${p.matches.toString().padEnd(5)} ${overs.padEnd(8)} ${p.maidens.toString().padEnd(5)} ${p.runsConceded.toString().padEnd(7)} ${p.wickets.toString().padEnd(7)} ${bbi.padEnd(8)} ${bowlAvg.padEnd(8)} ${econ.padEnd(8)} ${bowlSr.padEnd(8)}\n`; });
             }
             const blob = new Blob([statsText], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `cricsim_stats_${teamName}_${selectedFormat}.txt`;
+            const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `CricAssoDiscord_stats_${teamName}_${selectedFormat}.txt`;
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
             showNotification(`Stats for ${selectedTeam ? selectedTeam.name : 'All Teams'} downloaded.`);
         }
@@ -3510,7 +3510,7 @@ function updateAndSaveStats(currentMatchStats) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `cricsim_league_details_${league.name.replace(/\s+/g, '-')}.txt`;
+    a.download = `CricAssoDiscord_league_details_${league.name.replace(/\s+/g, '-')}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -4110,7 +4110,7 @@ function importJSON(callback) {
 
 // --- NEW: Settings Share/Import Logic ---
 function shareSettings() {
-    downloadJSON(probabilitySettings, `cricsim_settings_${Date.now()}.json`);
+    downloadJSON(probabilitySettings, `CricAssoDiscord_settings_${Date.now()}.json`);
     showNotification('Settings exported!');
 }
 
@@ -4128,7 +4128,7 @@ function importSettings() {
 
 // --- NEW: Commentary Share/Import Logic ---
 function shareCommentary() {
-    downloadJSON(customCommentaries, `cricsim_commentary_${Date.now()}.json`);
+    downloadJSON(customCommentaries, `CricAssoDiscord_commentary_${Date.now()}.json`);
     showNotification('Commentaries exported!');
 }
 
@@ -4171,7 +4171,7 @@ function shareLeague(leagueId) {
         version: '4.7' // Versioning for future compatibility
     };
 
-    downloadJSON(dataToShare, `cricsim_league_${league.name.replace(/\s+/g, '_')}.json`);
+    downloadJSON(dataToShare, `CricAssoDiscord_league_${league.name.replace(/\s+/g, '_')}.json`);
     showNotification('League and associated team data exported!');
 }
 
